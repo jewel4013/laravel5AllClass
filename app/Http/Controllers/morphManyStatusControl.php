@@ -64,7 +64,10 @@ class morphManyStatusControl extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('morph.onetomany.statusedit', [
+            'status' => Status::find($id),
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
@@ -72,7 +75,26 @@ class morphManyStatusControl extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        request()->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        $tags = $request->tag;
+        $tag =Tag::find($tags);
+
+        $status = Status::find($id);
+
+        $status->update(request()->except('_token', 'tag'));
+
+        // dd($tag->toArray());
+        // $status->tags()->detach($status->tag);
+        // $status->tags()->attach($tag);
+
+        $status->tags()->sync($tag);
+
+
+        return redirect('/morph/one2many/status/'.$status->id)->with('success', 'Status update successful.');
     }
 
     /**

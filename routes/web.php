@@ -84,9 +84,11 @@ Route::get('/morph/one2many', function(){
     return view('morph.onetomany.index');
 });
 Route::get('/morph/one2many/status', [morphManyStatusControl::class, 'index']);
+Route::get('/morph/one2many/status/{id}', [morphManyStatusControl::class, 'show']);
+Route::get('/morph/one2many/status/{id}/edit', [morphManyStatusControl::class, 'edit']);
+Route::patch('/morph/one2many/status/{id}/edit', [morphManyStatusControl::class, 'update']);
 Route::get('/morph/one2many/status/create', [morphManyStatusControl::class, 'create']);
 Route::post('/morph/one2many/status/create', [morphManyStatusControl::class, 'store']);
-Route::get('/morph/one2many/status/{id}', [morphManyStatusControl::class, 'show']);
 
 Route::get('/morph/one2many/video', [morphManyVideoControl::class, 'index']);
 Route::get('/morph/one2many/video/create', [morphManyVideoControl::class, 'create']);

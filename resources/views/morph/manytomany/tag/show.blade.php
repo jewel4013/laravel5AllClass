@@ -10,32 +10,51 @@
 <body>
     <div class="container">
 
-        @if (session('msg'))
-            <div class="alert alert-success alert-dismissible">
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                {{ session('msg') }}
-            </div>
-        @endif
-        <h2>Tags</h2>
-
+       <h4>Its a sing Tag shoing place</h4>
+       <h1>{{ $tag->name }}</h1>
         <a href="/tags/create" class="btn btn-primary">Tag Craete</a>
         <a href="/morph/many2many" class="btn btn-primary">Morph Many to Many</a>
         
-
+        <div class="">
+            <h2>Status slist</h2>
+        </div>        
         <table class="table">
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
+                <th>Title</th>
+                <th>Body</th>
                 <th>Action</th>                
             </tr>
-            @foreach ($tags as $tag)
+            @foreach ($tag->statuses as $status)
             <tr>
-                <td>{{ $tag->id }}</td>
+                <td>{{ $status->id }}</td>
+                <td>{{ $status->title }}</td>
+                <td>{{ $status->body }}</td>
                 <td>
-                    <a href="/tags/{{ $tag->name }}" class="">{{ $tag->name }}</a>                    
+                    <a href="#" class="btn btn-success">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
                 </td>
-                <td>{{ $tag->description }}</td>
+            </tr>                
+            @endforeach
+        </table>
+
+
+
+        <div class="">
+            <h2>Video slist</h2>
+        </div>        
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>URL</th>
+                <th>Action</th>                
+            </tr>
+            @foreach ($tag->videos as $video)
+            <tr>
+                <td>{{ $video->id }}</td>
+                <td>{{ $video->title }}</td>
+                <td>{{ $video->url }}</td>
                 <td>
                     <a href="#" class="btn btn-success">Edit</a>
                     <a href="#" class="btn btn-danger">Delete</a>

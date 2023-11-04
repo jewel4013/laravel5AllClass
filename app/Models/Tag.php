@@ -17,4 +17,11 @@ class Tag extends Model
     public function videos(){
         return $this->morphedByMany(Video::class, 'taggable');
     }
+
+    // public function getRouteKeyName()
+    // {
+    //     return 'name';
+    // }
+
+
 }

@@ -20,6 +20,7 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Body</th>
+                <th>Created at</th>
                 <th>Action</th>
             </tr>
             @foreach ($statuses as $status)
@@ -27,6 +28,7 @@
                     <td>{{ $status->id }}</td>
                     <td>{{ $status->title }}</td>
                     <td>{{ $status->body }}</td>
+                    <td>{{ $status->created_at->tz('6') }}</td>
                     <td><a href="/morph/one2many/status/{{ $status->id }}" class="">Show</a></td>
                 </tr>
             @endforeach

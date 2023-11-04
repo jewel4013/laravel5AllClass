@@ -44,9 +44,10 @@ class tagControl extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tag $tag)
+    public function show($tagname)
     {
-        //
+        $tag = Tag::whereName($tagname)->first();
+        return view('morph.manytomany.tag.show', compact('tag'));
     }
 
     /**
