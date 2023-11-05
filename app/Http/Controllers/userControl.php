@@ -83,4 +83,28 @@ class userControl extends Controller
     {
         //
     }
+
+
+
+
+
+
+
+
+
+    public function login(){
+        return view('users.login');
+    }
+    public function logstore(Request $request){
+        $user = User::where('email', $request->email)->where('uname', $request->uname)->first();
+        if($user){
+            session(['user' => $user]);
+        }else{
+            return "something wrong";
+        }
+    }
+    public function logout(){
+        session()->pull('user');
+        return back();
+    }
 }

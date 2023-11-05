@@ -20,8 +20,25 @@
             <a href="/mailing" class="btn btn-primary">Sent mail</a>
             <a href="/files" class="btn btn-primary">File upload</a>
             <a href="/morph" class="btn btn-primary">Morph Relations</a>
+            <a href="/sessionput" class="btn btn-primary">Session_Put</a>
+            <a href="/sessionpull" class="btn btn-primary">Session_Pull</a>
+            <a href="/login" class="btn btn-primary">Log In</a>
+            <a href="/logout" class="btn btn-primary">Log out</a>
         </div>
+
+
+        {{-- <p>{{ session()->get('user_name', 'No Session create') }}</p> --}}
+        {{-- <p>{{ request()->session()->get('user_name', 'No Session create') }}</p> --}}
+        {{-- <P>{{ session()->has('user_name') ? 'Yes' : 'No' }}</P>
+        <P>{{ session()->exists('user_name') ? 'Yes' : 'No' }}</P> --}}
+        <P>{{ session()->exists('user') ? 'Yes' : 'No' }}</P>
+        
+
+
+
     </div>
+
+
 
     
 </body>

@@ -23,6 +23,9 @@ class tagControl extends Controller
      */
     public function create()
     {
+        if(!session('user')){
+            return back();
+        }
         return view('morph.manytomany.tag.tagCeate');
     }
 

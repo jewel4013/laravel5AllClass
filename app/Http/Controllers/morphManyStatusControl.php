@@ -64,9 +64,15 @@ class morphManyStatusControl extends Controller
      */
     public function edit(string $id)
     {
+
+        $status = Status::find($id);
+        // $tag_id = $status->tags->pluck('id');
+
+
         return view('morph.onetomany.statusedit', [
-            'status' => Status::find($id),
+            'status' => $status,
             'tags' => Tag::all(),
+            // 'tag_id' => $tag_id,
         ]);
     }
 

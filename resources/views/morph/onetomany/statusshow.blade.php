@@ -29,6 +29,11 @@
         <h2>{{ $status->title }}</h2>
         <p>{{ $status->body }}</p>
 
+        <strong>Tags: </strong>
+        @foreach ($status->tags as $tag)
+            <a href="/tags/{{ $tag->name }}" class="btn btn-success btn-sm mb-1">{{ $tag->name }}</a>
+        @endforeach
+
 
         <div class="">
             <a href="/morph/one2many/status/{{ $status->id }}/edit" class="btn btn-primary">Edit</a>

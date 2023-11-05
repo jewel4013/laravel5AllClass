@@ -59,6 +59,10 @@ Route::delete('/country/{id}/delete', [countryControl::class, 'destroy']);
 Route::get('/files', [fileControl::class, 'index']);
 Route::post('/files', [fileControl::class, 'store']);
 
+Route::get('/login', [userControl::class, 'login']);
+Route::post('/login', [userControl::class, 'logstore']);
+Route::get('/logout', [userControl::class, 'logout']);
+
 
 
 Route::get('/mailing', [mailControl::class, 'index']);
@@ -117,6 +121,18 @@ Route::get('/person/{id}', [personControl::class, 'show']);
 Route::delete('/person/{id}/delete', [personControl::class, 'destroy']);
 
 
+Route::get('/sessionput', function(){
+    // request()->session()->put('user_name', 'Jewel Sir');
+    session(['user_name' => 'Jewel Rana']);
+
+    return back();
+});
+Route::get('/sessionpull', function(){
+    // request()->session()->pull('user_name');
+    session()->pull('user_name');
+
+    return back();
+});
 
 Route::get('/signup', [signUpControl::class, 'index']);
 Route::get('/signup/form', [signUpControl::class, 'create']);

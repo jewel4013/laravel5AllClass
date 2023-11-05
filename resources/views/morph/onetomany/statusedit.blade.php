@@ -35,10 +35,9 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="tag" class="form-label">Tags:</label>
-                <select class="form-control" name="tag[]" multiple>
-                    <option value="">Select tags</option>
+                <select class="form-control" name="tag[]" multiple>                    
                     @foreach ($tags as $tag)
-                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        <option value="{{ $tag->id }}" {{ $status->tags->pluck('id')->contains($tag->id) ? 'selected' : '' }}>{{ $tag->name }}</option>
                     @endforeach
                 </select>
             </div>                        
